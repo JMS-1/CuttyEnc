@@ -1,0 +1,29 @@
+MPEG2ENC
+-a <code>		Bildverhältnis: 1 = VGA, 2 = 4:3, 3 = 16:9, 4 = Breitwand
+-n <code>		Videonorm: n = NTSC, p = PAL, s = SECAM
+-f <format>		Zielformat: 0 = MPEG1, 1 = VCD(Standard), 2 = VCD, 3 = MPEG2, 4 = SVCD(Standard), 5 = SVCD, 6 = VCD(Standbild), 7 = SVCD(Standbild), 8 = DVD [CuttyEnc benutzt immer DVD]
+-o <file>		Pfad zur Zieldatei
+-b <zahl>		Bitrate in kbps, e.g. 8000
+-V <zahl>		Videobuffer in kBytes
+-F <code>		Framerate gemäß MPEG-2, e.g. 3 = 25fps {PAL}, 4 = 29.97fps {NTSC}
+Werte von Cuttermaran: -a -n -f -o -b -V -F
+
+Exkurs MPEG2ENC -F:
+- MPEG2 definiert die Raten als Brüche (siehe auch FrameRateInfo.cs im Source)
+	0	= 1
+	1	= 24000 / 1001
+	2	= 24
+	3	= 25
+	4	= 30000 / 1001
+	5	= 30
+	6	= 50
+	7	= 60000 / 1001
+	8	= 60	
+	9	= 15 / 1001
+	10	= 5 / 1001
+	11	= 10 / 1001
+	12	= 12 / 1001
+	13	= 15 / 1001
+	14	= 1
+	15	= 1
+	

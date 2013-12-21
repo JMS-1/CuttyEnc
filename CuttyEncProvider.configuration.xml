@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExternalToolProviderData xmlns="http://cuttermaran.kickme.to/ExternalToolProviderData.xsd">
+	<Configuration Executive="CuttyEnc" ToolType="encoder" IsActive="true" IsAssembly="true" DisplayName="MPEG2Enc"
+		ClassName="CuttyEnc.Connector" ActionMethod="Encode" ConfigMethod="Config" SupportedEncodingColors="YV12" ></Configuration>
+</ExternalToolProviderData>

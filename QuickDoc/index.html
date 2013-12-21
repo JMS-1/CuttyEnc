@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>CuttyEnc 1.2.0.0</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+	</head>
+	<body>
+		<P align="center"><STRONG><FONT size="6">Using the MPEG2Enc Utility with <A href="http://cuttermaran.movie2digital.de" target="_blank">
+						Cuttermaran</A></FONT></STRONG></P>
+		<P>&nbsp;</P>
+		<P>The software you can download <A href="http://www.psimarron.net/downloads/DVB/CuttyEnc.zip">
+				here</A> makes it possible to use the free MPEG2Enc utility to re-encode 
+			the cut points in Cuttermaran. Cuttermaran itself is freeware but for 
+			re-encoding on a B-Frame cut it will use <A href="http://www.tmpgenc.net/" target="_blank">
+				TMPGEnc</A> which is a commercial application. Since starting with version 
+			1.58 Cuttermaran&nbsp;will allow to use other encoders as well <A href="http://www.jochen.jochen-manns.de">
+				I</A> wrote a connector to MPEG2Enc.
+		</P>
+		<P>
+			You can use&nbsp;CuttyEnc for free but on your own risk.&nbsp;The source code 
+			can be found <A href="http://www.psimarron.net/downloads/DVB/CuttyEnc_Source.zip">here</A>. 
+			The official documentation is on the&nbsp;<A href="http://www.highpaqnet.de/CuttyEnc/" target="_blank">HighPaq.Net</A>. 
+			Since you are using Cuttermaran I would suggest to take a look at the great <A href="http://www.highpaqnet.de/DVDGuide/HTML/index.html" target="_blank">
+				DVD Guide</A> on this site.</P>
+		<P>If Cuttermaran 1.63 is up and running the following additional installations 
+			have to be done to get the connector running:&nbsp;</P>
+		<UL>
+			<LI>
+				There should be some directory with version 0.6.9 of the <A href="http://sourceforge.net/project/showfiles.php?group_id=59028" target="_blank">
+					DVD Author</A>
+			binaries which include the command line tool MPEG2Enc&nbsp;and additional DLLs 
+			which are used by CuttyEnc
+			<LI>
+				The same tool version is included (or recommended, depending on the 
+				download)&nbsp;with the <A href="http://www.boraxsoft.de/GUI_DVDauthor_01.shtml" target="_blank">
+					DVD Author GUI </A>
+			0.75 - these are the files I use
+			<LI>
+				Copy the files from the download above into the <EM>Provider/encode</EM> directory 
+				of Cuttermaran</LI></UL>
+		<P>The next time Cuttermaran is started the new encoder can be selected using the <EM>Actions/Settings...</EM>
+			dialog.</P>
+		<P>
+			<img src="Selection.jpg" width="432" height="376">
+		</P>
+		<P>After the encoder has been selected <STRONG>it must be configured once before it can 
+				be</STRONG> used by pressing the <EM>Configure...</EM> button (the dialog 
+			might be in german depending on the language selected in Cuttermaran).</P>
+		<img src="Settings.jpg" width="456" height="128">
+		<P>The directory path to the MPEG2Enc und DLLs is selected by double clicking the 
+			text field. The additional option should be left in&nbsp;the original state.</P>
+		<P>If the directory path is not set MPEG2Enc <STRONG>must</STRONG> either be in the <EM>
+				encode</EM> directory itself or in a directory <EM>External Tools</EM> below 
+			the Cuttermaran main directory or CuttyEnc will fail. The error message 
+			generated will not be very helpful if you're not a .NET developer&nbsp;- sorry 
+			for that.</P>
+		<P>&nbsp;</P>
+		<HR width="100%" SIZE="1">
+		<P><STRONG>Changes in Version 1.2.0.0 (2005/3/15)</STRONG></P>
+		<BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+			<P>Experimental fixes to support cutting HDTV material as described in the <A href="http://technik.movie2digital.de/thread.php?threadid=22593">
+					Cuttermaran forum</A>. The changes should not harm normal operations 
+				because the additional code activates only at&nbsp;720 (or more) vertical lines 
+				per frame.</P>
+			<P>The HDTV modus will only work without error message if you use the patched 
+				MPEG2Enc.exe version as explained in the Cuttermaran forum - please refer to 
+				the discussion thread for more details.</P>
+		</BLOCKQUOTE>
+		<P><STRONG>Changes in Version 1.1.0.0 (2004/11/12)</STRONG></P>
+		<BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+			<P>The first version of CuttyEnc used the free JPEG2YUV tool included with the 
+				DVDAuthor and the GUI for DVDAuthor. The version included has a bug which leads 
+				to a change in the colors. In fact there is a newer version of the tool which 
+				(with a new command line option -R) corrects this behaviour. This version is 
+				not available as a windows binary&nbsp;download yet and most 
+				important:&nbsp;after taking a deeper look in the problem I found that JPEG2YUV 
+				is not really needed!</P>
+			Cuttermaran offers the movie sequence to re-encode as an AVI file to the 
+			encoding provider. The codec used is YV12. The originial CuttyEnc took this, 
+			decoded it to BMP (RGB), packed it to JPEG and let JPEG2YUV generate a so 
+			called YUV4MPEG2 stream which is the only input format accepted by MPEG2Enc. 
+			Not only the colors are changed but&nbsp;there is quite a bit of quality loss 
+			due to the conversions and packings involved.</BLOCKQUOTE><BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+			<P>Starting with 1.1.0.0 CuttyEnc no longer needes JPEG2YUV. In fact the expected 
+				YUV4MPEG2 stream uses a IYUV codec with only some additional string headers in 
+				between. IYUV is&nbsp;semantically identically to YV12 with only the color 
+				planes physically swapped. So CuttyEnc takes the YV12 input, swapps the color 
+				plans, adds the headers and sends the result to MPEG2Enc. MPEG2Enc will get the 
+				exact output from Cuttermaran with no color modifications and full quality. No 
+				processing time gets lost due to conversions and no temporary file space is 
+				needed in addition to the AVI file from Cuttermaran itself.</P>
+			<P>The result is now nearly the same as for TMPGEnc. In very large magnifications 
+				some tiny artefacts on color borders are visible which TMPGEnc will not 
+				produce. Personally I don't think that this is worth the difference in price. 
+				In addition the 'DVD compliant stream' option in Cuttermarn now generates a 
+				smooth result and even in an animation scene I could see no difference from the 
+				original movie - using 8000kbps encoding and no magnifier.</P>
+		</BLOCKQUOTE>
+	</body>
+</html>
