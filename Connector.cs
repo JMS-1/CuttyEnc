@@ -156,30 +156,14 @@ namespace CuttyEnc
                     // Create the executer
                     using (YV122M2V pEncoder = new YV122M2V())
                     {
-                        // Special HDTV correction
-                        if (1080 == lHeight)
-                            lHeight = 1088;
-
                         // Configure
                         pEncoder.VideoNorm = GetVideoNorm( eFormat );
                         pEncoder.AspectRatio = GetAspect( lAspect );
-                        pEncoder.HiResMode = (lHeight >= 720);
                         pEncoder.FrameRateCode = dFrameRate;
                         pEncoder.OutputFile = sOutput;
                         pEncoder.InputFile = sInput;
                         pEncoder.Height = lHeight;
                         pEncoder.Width = lWidth;
-
-                        // Use special path for high res mode
-                        if (pEncoder.HiResMode)
-                        {
-                            // Test for diretory
-                            DirectoryInfo hiRes = new DirectoryInfo( Path.Combine( CommandLineTool.PresetDirectory, "HDTV" ) );
-
-                            // Use if it exists
-                            if (hiRes.Exists)
-                                CommandLineTool.PresetDirectory = hiRes.FullName;
-                        }
 
                         // Check mode
                         if (bMEPG2)

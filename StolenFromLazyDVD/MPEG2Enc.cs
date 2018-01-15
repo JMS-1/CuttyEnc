@@ -90,11 +90,6 @@ namespace JMS.InterOp.DVDAuthor
         public int Quantisation = 0;
 
         /// <summary>
-        /// Set to activate high resolution mode.
-        /// </summary>
-        public bool HiResMode = false;
-
-        /// <summary>
         /// Video buffer size in kB.
         /// </summary>
         public int BufferSize = 0;
@@ -145,8 +140,6 @@ namespace JMS.InterOp.DVDAuthor
                 case VideoNorms.SECAM: AddArgument( 'n', 's' ); break;
             }
             AddArgument( 'f', (int) Format );
-            if (HiResMode) 
-                AddArgument( 'K', "hi-res --no-constraints" );
             if (null != OutputFile) 
                 AddPath( 'o', OutputFile );
             if (0 != Quantisation) 

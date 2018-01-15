@@ -107,23 +107,6 @@ namespace JMS.InterOp.DVDAuthor
         }
 
         /// <summary>
-        /// Gets or sets the high-resolution modus in the encoder.
-        /// </summary>
-        public bool HiResMode
-        {
-            get
-            {
-                // Report
-                return m_ToVideo.HiResMode;
-            }
-            set
-            {
-                // Forward
-                m_ToVideo.HiResMode = value;
-            }
-        }
-
-        /// <summary>
         /// Set the MPEG2 file format of the encoder.
         /// </summary>
         public MPEG2Enc.Formats Format
